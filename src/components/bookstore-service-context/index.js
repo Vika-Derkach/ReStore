@@ -1,6 +1,6 @@
 import {
   BookstoreServiceConsumer,
   BookstoreServiceProvider,
-} from "./swapi-service-context";
+} from "./bookstore-service-context";
 
 export { BookstoreServiceProvider, BookstoreServiceConsumer };
