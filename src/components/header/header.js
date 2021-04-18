@@ -6,7 +6,7 @@ const Header = () => {
       <div className="header d-flex">
         <h1>ReStore</h1>
         <div className="header-item">
-          <i class="fa fa-anchor" aria-hidden="true"></i>
+          <i className="fa fa-anchor" aria-hidden="true"></i>
           <div className="costs">item 5 (200$) </div>
         </div>
       </div>

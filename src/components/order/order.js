@@ -26,13 +26,13 @@ const Order = () => {
                 type="button"
                 className="btn btn-outline-warning btn-sm float-right"
               >
-                <i class="fa fa-minus-circle" aria-hidden="true"></i>
+                <i className="fa fa-minus-circle" aria-hidden="true"></i>
               </button>
               <button
                 type="button"
                 className="btn btn-outline-success btn-sm float-right"
               >
-                <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                <i className="fa fa-plus-circle" aria-hidden="true"></i>
               </button>
               <button
                 type="button"
@@ -68,7 +68,7 @@ const Order = () => {
       <div className="buying">
         <div> total: $213 </div>
         <button className="btn btn-info">
-          <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
+          <i className="fa fa-calendar-check-o" aria-hidden="true"></i>
           Checkout
         </button>
       </div>
