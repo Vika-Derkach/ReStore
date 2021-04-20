@@ -1,33 +1,37 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import ErrorBoundry from "../error-boundry";
+import { Route, Switch } from "react-router-dom";
 import ErrorIndicator from "../error-indicator";
 import Goods from "../goods";
-import Header from "../header";
 import Order from "../order";
 import { CartPage, HomePage } from "../pages";
+import ShopHeader from "../shop-header";
 import Spinner from "../spinner";
 
 export default class App extends Component {
   render() {
     return (
-      <ErrorBoundry>
-        <Router>
-          <Header />
-          <Switch>
-            <Route path="/" component={HomePage} exact />
-            <Route path="/cart-page" component={CartPage} />
+      // <ErrorBoundry>
+      <main role="main" className="container">
+        <ShopHeader numItems={5} total={250} />
 
-            <Route render={() => <h2>Page is not found</h2>} />
-          </Switch>
-          <Goods />
+        {/* <Router> */}
+        {/* {   <Header />} */}
+        <Switch>
+          <Route path="/" component={HomePage} exact />
+          <Route path="/cart" component={CartPage} />
 
-          <Order />
+          <Route render={() => <h2>Page is not found</h2>} />
+        </Switch>
 
-          <Spinner />
-          <ErrorIndicator />
-        </Router>
-      </ErrorBoundry>
+        <Goods />
+
+        <Order />
+
+        <Spinner />
+        <ErrorIndicator />
+        {/* </Router> */}
+      </main>
+      // {/* </ErrorBoundry> */}
     );
   }
 }

@@ -1,22 +1,27 @@
 const initialState = {
-  books: [
-    // {
-    //   id: 1,
-    //   title: "Production-ready microservices",
-    //   author: "Susan Fowler",
-    // },
-    // {
-    //   id: 2,
-    //   title: "release it ",
-    //   author: "michael t. nygard ",
-    // },
-  ],
+  books: [],
+  loading: true,
+  error: null,
 };
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case "BOOKS_LOADED":
+    case "FETCH_BOOKS_REQUEST":
+      return {
+        books: [],
+        loading: true,
+        error: null,
+      };
+    case "FETCH_BOOKS_SUCCESS":
       return {
         books: action.payload,
+        loading: false,
+        error: null,
+      };
+    case "FETCH_BOOKS_FAILURE":
+      return {
+        books: [],
+        loading: false,
+        error: action.payload,
       };
     default:
       return state;
