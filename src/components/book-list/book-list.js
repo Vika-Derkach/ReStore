@@ -1,19 +1,23 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { fetchBooks } from "../../actions";
+import { bookAddedToCart, fetchBooks } from "../../actions";
 import { compose } from "../../utils";
 import BookListItem from "../book-list-item";
 import ErrorIndicator from "../error-indicator";
 import { withBookstoreService } from "../hoc";
 import Spinner from "../spinner";
 import "./book-list.css";
-const BookList = ({ books }) => {
+const BookList = ({ books, onAddedToCart, onClicked }) => {
   return (
     <ul className="book-list">
       {books.map((book) => {
         return (
           <li key={book.id}>
-            <BookListItem book={book} />
+            <BookListItem
+              book={book}
+              onAddedToCart={() => onAddedToCart(book.id, book.count)}
+              // onClicked={() => onClicked(book.count)}
+            />
           </li>
         );
       })}
@@ -25,14 +29,20 @@ class BookListContainer extends Component {
     this.props.fetchBooks();
   }
   render() {
-    const { books, loading, error } = this.props;
+    const { books, loading, error, onAddedToCart, onClicked } = this.props;
     if (loading) {
       return <Spinner />;
     }
     if (error) {
       return <ErrorIndicator />;
     }
-    return <BookList books={books} />;
+    return (
+      <BookList
+        books={books}
+        onAddedToCart={onAddedToCart}
+        onClicked={onClicked}
+      />
+    );
   }
 }
 
@@ -43,6 +53,10 @@ const mapDispatchToProps = (dispatch, { bookstoreService }) => {
   // const { booksLoaded, booksRequested, booksError } = this.props;
   return {
     fetchBooks: fetchBooks(bookstoreService, dispatch),
+    onAddedToCart: (id, count) => dispatch(bookAddedToCart(id, count)),
+    onClicked: (count) => {
+      console.log(`count ${count}`);
+    },
   };
 };
 export default compose(

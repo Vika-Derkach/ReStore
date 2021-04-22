@@ -16,6 +16,12 @@ const booksError = (error) => {
     payload: error,
   };
 };
+export const bookAddedToCart = (booksId) => {
+  return {
+    type: "BOOK_ADDED_TO_CART",
+    payload: booksId,
+  };
+};
 const fetchBooks = (bookstoreService, dispatch) => () => {
   // 1. recieve data
 
