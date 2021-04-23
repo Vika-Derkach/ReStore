@@ -22,6 +22,24 @@ export const bookAddedToCart = (booksId) => {
     payload: booksId,
   };
 };
+export const onDelete = (arrId) => {
+  return {
+    type: "BOOK_DELETED_FROM_CART",
+    payload: arrId,
+  };
+};
+export const onIncrease = (arrIncreaseId) => {
+  return {
+    type: "BOOK_INCREASE_FROM_CART",
+    payload: arrIncreaseId,
+  };
+};
+export const onDecrease = (arrDecreaseId) => {
+  return {
+    type: "BOOK_DECREASE_FROM_CART",
+    payload: arrDecreaseId,
+  };
+};
 const fetchBooks = (bookstoreService, dispatch) => () => {
   // 1. recieve data
 
