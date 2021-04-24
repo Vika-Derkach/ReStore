@@ -52,9 +52,16 @@ export const allBookRemovedFromCart = (booksId) => {
 //     payload: arrDecreaseId,
 //   };
 // };
-const fetchBooks = (bookstoreService, dispatch) => () => {
+const fetchBooksOld = (bookstoreService, dispatch) => () => {
   // 1. recieve data
 
+  dispatch(booksRequested());
+  bookstoreService
+    .getBooks()
+    .then((data) => dispatch(booksLoaded(data)))
+    .catch((err) => dispatch(booksError(err)));
+};
+const fetchBooks = (bookstoreService) => () => (dispatch) => {
   dispatch(booksRequested());
   bookstoreService
     .getBooks()
